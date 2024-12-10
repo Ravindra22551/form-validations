@@ -1,0 +1,27 @@
+<form [formGroup]="formgroup" (ngSubmit)=onsubmit()>
+    <input type="text" placeholder="Enter user name" name="user name" class="form-control" formControlName="username" >
+<div *ngIf="formgroup.get('username')?.invalid && formgroup.get('username')?.touched">
+    <small *ngIf="formgroup.get('username')?.errors?.['required']">please fill the details</small>
+    <small *ngIf="formgroup.get('username')?.errors?.['minlength']">username must consists 5 characters</small>
+    <small *ngIf="formgroup.get('username')?.errors?.['maxlength']">please check the user name</small>
+
+</div>
+<input type="email" placeholder="enter email" name="email" class="form-control" formControlEmail="email">
+<div *ngIf="formgroup.get('email')?.invalid && formgroup.get('email')?.touched">
+    <small *ngIf="formgroup.get('email')?.errors?.['required']">please enter the emaill</small>
+    <small *ngIf="formgroup.get('email')?.errors?.['@email']">invalid email</small>
+</div>
+<input type="number" placeholder="enter password" name="password" class="form-control" formControlPassword="password">
+<div *ngIf="formgroup.get('password')?.invalid && formgroup.get('password')?.touched">
+    <small *ngIf="formgroup.get('password')?.errors?.['required']">please enter the password</small>
+    <small *ngIf="formgroup.get('password')?.errors?.['minlength']">password mimimum contain 5 letters</small>
+    <small *ngIf="formgroup.get('password')?.errors?.['maxlength']">password maximum contain 20 letters</small>
+</div>
+<input type="number" placeholder="enter pincode" name="pincode" clas="form-control" formControlPincode="pincode">
+<div *ngIf="formgroup.get('pincode')?.invalid && formgroup.get('pincode')?.touched">
+    <small *ngIf="formgroup.get('pincode')?.errors?.['required']">please enter the pincode</small>
+    <small *ngIf="formgroup.get('pincode')?.errors?.['minlength']">password must contain 6 letters</small>
+    <small *ngIf="formgroup.get('pincode')?.errors?.['maxlength']">password must contain 6 letters</small>
+</div>
+<button type="submit" class="btn btn-primary" [disabled]="formgroup.valid">submit</button>
+</form>
